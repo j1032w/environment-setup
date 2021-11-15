@@ -1,0 +1,28 @@
+alias c='clear'
+alias d='docker'
+alias di='docker image list'
+alias dp='docker ps -a --format="table {{.ID}}\t{{.Names}}\t{{.Image}}\t{{.Command}}\t{{.Status}}"'
+alias de='docker exec -it $0 /bin/sh'
+alias y='yarn'
+
+
+bindkey  "^[[H"   beginning-of-line
+bindkey  "^[[F"   end-of-line
+bindkey  "^[[3~"  delete-char
+
+
+# nmon default option
+export NMON=cnm
+
+
+autoload -U compinit; compinit
+zstyle ':completion:*' menu select
+
+export FZF_DEFAULT_OPTS='--height 80% --reverse'
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+bindkey -r '^R'
+# showkey -a
+# F1
+bindkey '^[OP' fzf-history-widget
+
+source <(kubectl completion zsh)
